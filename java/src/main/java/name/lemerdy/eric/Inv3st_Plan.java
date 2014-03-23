@@ -1,9 +1,15 @@
 package name.lemerdy.eric;
 
+import com.google.common.base.Function;
+import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
+import com.google.common.collect.Iterables;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.google.common.base.Joiner.on;
 import static java.lang.String.format;
 
 public class Inv3st_Plan {
@@ -12,7 +18,9 @@ public class Inv3st_Plan {
         Scanner scanner = new Scanner(input);
         scanner.nextInt();
         List<String> allowingPrfts1 = new ArrayList<>();
+        int caseCount = 0;
         while (scanner.hasNext()) {
+            caseCount++;
             int amount = scanner.nextInt();
             List<Integer> mList = new ArrayList();
             for (int i = 1; i <= 12; i++) {
@@ -42,18 +50,11 @@ public class Inv3st_Plan {
                 }
             }
             if (limitPrft <= 0) {
-                allowingPrfts1.add("IMPOSSIBLE");
+                allowingPrfts1.add(format("Case #%d: IMPOSSIBLE", caseCount));
             } else {
-                allowingPrfts1.add(format("%d %d %d", best_bM, best_sM, limitPrft));
+                allowingPrfts1.add(format("Case #%d: %d %d %d", caseCount, best_bM, best_sM, limitPrft));
             }
         }
-        String output1 = new String(new byte[]{});
-        for (int i = 0; i < allowingPrfts1.size(); i++) {
-            if (i > 0) {
-                output1 += "\n";
-            }
-            output1 += format("Case #%d: %s", i + 1, allowingPrfts1.get(i));
-        }
-        return output1.toString();
+        return on('\n').join(allowingPrfts1);
     }
 }
