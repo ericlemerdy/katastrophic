@@ -16,11 +16,8 @@ public class Inv3st_Plan {
         while (scanner.hasNext()) {
             int amount = scanner.nextInt();
             List<Integer> mList = new ArrayList();
-            // We use BigInteger for optimization on ARM processors
             Integer best_bM = Integer.MIN_VALUE;
             Integer best_sM = Integer.MIN_VALUE;
-
-            // Max profit is set to min value for initialization purposes.
             Integer limitPrft = Integer.MIN_VALUE;
             for (int i = 1; i <= 12; i++) {
                 mList.add(scanner.nextInt());
