@@ -43,13 +43,11 @@ public class Inv3st_Plan {
                     }
                 }
             }
-            String bestPrft = "0 ";
             if (limitPrft <= 0) {
-                bestPrft = "IMPOSSIBLE";
+                allowingPrfts1.add("IMPOSSIBLE");
             } else {
-                bestPrft = best_bM + " " + best_sM + " " + limitPrft;
+                allowingPrfts1.add(best_bM + " " + best_sM + " " + limitPrft);
             }
-            allowingPrfts1.add(bestPrft);
         }
         String output1 = new String(new byte[]{});
         for (int i = 0; i < allowingPrfts1.size(); i++) {
