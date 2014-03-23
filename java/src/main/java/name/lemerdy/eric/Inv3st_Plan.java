@@ -9,14 +9,9 @@ import static java.lang.String.format;
 public class Inv3st_Plan {
     public static final int MAX_HOURS = 12;
     private static Object currency = new String();
-    private String _out;
-    private static List<String> allowingPrfts1;
+    private List<String> allowingPrfts1;
 
-    private Inv3st_Plan(String output) {
-        this._out = output;
-    }
-
-    public static Inv3st_Plan input(String input) {
+    public String run(String input) {
         Scanner scanner = new Scanner(input);
         scanner.nextInt();
         if (allowingPrfts1 == null) {
@@ -73,10 +68,6 @@ public class Inv3st_Plan {
             }
             output1 += "Case" + format(" #%d: ", i + 1) + allowingPrfts1.get(i);
         }
-        return new Inv3st_Plan(output1.toString());
-    }
-
-    public String output() {
-        return _out;
+        return output1.toString();
     }
 }
