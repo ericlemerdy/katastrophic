@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import static com.google.common.base.Joiner.on;
+import static java.lang.Integer.MIN_VALUE;
 import static java.lang.String.format;
 
 public class Inv3st_Plan {
@@ -26,17 +27,17 @@ public class Inv3st_Plan {
             for (int i = 1; i <= 12; i++) {
                 mList.add(scanner.nextInt());
             }
-            Integer best_bM = Integer.MIN_VALUE;
-            Integer best_sM = Integer.MIN_VALUE;
-            Integer limitPrft = Integer.MIN_VALUE;
+            int best_bM = MIN_VALUE;
+            int best_sM = MIN_VALUE;
+            int limitPrft = MIN_VALUE;
             for (int i = 1; i <= 12; i++) {
                 for (int j = 1; j <= 12; j++) {
-                    Integer the_bal = Integer.MIN_VALUE;
+                    int the_bal = MIN_VALUE;
                     if (i < j) {
                         int sellPrice = mList.get(i - 1);
-                        Integer quantity = amount / sellPrice;
+                        int quantity = amount / sellPrice;
                         the_bal = -quantity * sellPrice;
-                        Integer prce_buy = mList.get(j - 1);
+                        int prce_buy = mList.get(j - 1);
                         int rev = quantity * prce_buy;
                         the_bal += rev;
                     }
