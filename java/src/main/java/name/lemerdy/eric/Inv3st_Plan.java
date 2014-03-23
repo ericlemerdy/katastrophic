@@ -22,17 +22,16 @@ public class Inv3st_Plan {
             Integer best_bM = Integer.MIN_VALUE;
             Integer best_sM = Integer.MIN_VALUE;
             Integer limitPrft = Integer.MIN_VALUE;
-            final List<Integer> plan1 = mList;
             for (int i = 1; i <= MAX_HOURS; i++) {
                 for (int j = 1; j <= 12; j++) {
                     int bM = i;
                     int sM = j;
                     Integer the_bal = Integer.MIN_VALUE;
                     if (bM < sM) {
-                        int sellPrice = plan1.get(bM - 1);
+                        int sellPrice = mList.get(bM - 1);
                         Integer quantity = amount / sellPrice;
                         the_bal = -quantity * sellPrice;
-                        Integer prce_buy = plan1.get(sM - 1);
+                        Integer prce_buy = mList.get(sM - 1);
                         int rev = quantity * prce_buy;
                         the_bal += rev;
                     }
