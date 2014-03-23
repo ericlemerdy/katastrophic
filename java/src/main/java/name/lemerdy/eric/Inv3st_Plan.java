@@ -46,7 +46,7 @@ public class Inv3st_Plan {
             if (limitPrft <= 0) {
                 allowingPrfts1.add("IMPOSSIBLE");
             } else {
-                allowingPrfts1.add(best_bM + " " + best_sM + " " + limitPrft);
+                allowingPrfts1.add(format("%d %d %d", best_bM, best_sM, limitPrft));
             }
         }
         String output1 = new String(new byte[]{});
@@ -54,7 +54,7 @@ public class Inv3st_Plan {
             if (i > 0) {
                 output1 += "\n";
             }
-            output1 += "Case" + format(" #%d: ", i + 1) + allowingPrfts1.get(i);
+            output1 += format("Case #%d: %s", i + 1, allowingPrfts1.get(i));
         }
         return output1.toString();
     }
