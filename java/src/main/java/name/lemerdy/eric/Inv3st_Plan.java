@@ -7,7 +7,6 @@ import java.util.Scanner;
 import static java.lang.String.format;
 
 public class Inv3st_Plan {
-    public static final int MAX_HOURS = 12;
 
     public String run(String input) {
         Scanner scanner = new Scanner(input);
@@ -22,7 +21,7 @@ public class Inv3st_Plan {
             Integer best_bM = Integer.MIN_VALUE;
             Integer best_sM = Integer.MIN_VALUE;
             Integer limitPrft = Integer.MIN_VALUE;
-            for (int i = 1; i <= MAX_HOURS; i++) {
+            for (int i = 1; i <= 12; i++) {
                 for (int j = 1; j <= 12; j++) {
                     int bM = i;
                     int sM = j;
