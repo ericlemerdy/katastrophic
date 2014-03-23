@@ -8,7 +8,6 @@ import static java.lang.String.format;
 
 public class Inv3st_Plan {
     public static final int MAX_HOURS = 12;
-    private static Object currency = new String();
 
     public String run(String input) {
         Scanner scanner = new Scanner(input);
@@ -49,11 +48,11 @@ public class Inv3st_Plan {
                     }
                 }
             }
-            String bestPrft = "0 " + (currency == null ? "€" : currency);
+            String bestPrft = "0 ";
             if (limitPrft <= 0) {
                 bestPrft = "IMPOSSIBLE";
             } else {
-                bestPrft = best_bM + " " + best_sM + " " + limitPrft + (currency == null ? "$" : currency);
+                bestPrft = best_bM + " " + best_sM + " " + limitPrft;
             }
             allowingPrfts1.add(bestPrft);
         }
