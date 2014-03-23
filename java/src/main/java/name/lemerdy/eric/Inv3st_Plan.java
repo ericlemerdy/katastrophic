@@ -9,15 +9,11 @@ import static java.lang.String.format;
 public class Inv3st_Plan {
     public static final int MAX_HOURS = 12;
     private static Object currency = new String();
-    private List<String> allowingPrfts1;
 
     public String run(String input) {
         Scanner scanner = new Scanner(input);
         scanner.nextInt();
-        if (allowingPrfts1 == null) {
-            allowingPrfts1 = new ArrayList<String>();
-        }
-        allowingPrfts1.clear();
+        List<String> allowingPrfts1 = new ArrayList<>();
         while (scanner.hasNext()) {
             int amount = scanner.nextInt();
             List<Integer> mList = new ArrayList();
