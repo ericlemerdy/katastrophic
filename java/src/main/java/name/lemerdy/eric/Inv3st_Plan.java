@@ -16,12 +16,12 @@ public class Inv3st_Plan {
         while (scanner.hasNext()) {
             int amount = scanner.nextInt();
             List<Integer> mList = new ArrayList();
-            Integer best_bM = Integer.MIN_VALUE;
-            Integer best_sM = Integer.MIN_VALUE;
-            Integer limitPrft = Integer.MIN_VALUE;
             for (int i = 1; i <= 12; i++) {
                 mList.add(scanner.nextInt());
             }
+            Integer best_bM = Integer.MIN_VALUE;
+            Integer best_sM = Integer.MIN_VALUE;
+            Integer limitPrft = Integer.MIN_VALUE;
             final List<Integer> plan1 = mList;
             for (int i = 1; i <= MAX_HOURS; i++) {
                 for (int j = 1; j <= 12; j++) {
