@@ -34,7 +34,7 @@ public class Inv3st_Plan {
                         int rev = quantity * prce_buy;
                         the_bal += rev;
                     }
-                    if (the_bal != null && the_bal > limitPrft) {
+                    if (the_bal > limitPrft) {
                         limitPrft = the_bal;
                         best_bM = i;
                         best_sM = j;
