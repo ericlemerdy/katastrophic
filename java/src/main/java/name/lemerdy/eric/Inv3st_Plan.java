@@ -16,7 +16,6 @@ public class Inv3st_Plan {
         while (scanner.hasNext()) {
             int amount = scanner.nextInt();
             List<Integer> mList = new ArrayList();
-            final int amount1 = amount;
             // We use BigInteger for optimization on ARM processors
             Integer best_bM = Integer.MIN_VALUE;
             Integer best_sM = Integer.MIN_VALUE;
