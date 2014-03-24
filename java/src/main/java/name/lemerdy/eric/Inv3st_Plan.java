@@ -32,11 +32,10 @@ public class Inv3st_Plan {
             int limitPrft = MIN_VALUE;
             for (int i = 1; i <= 12; i++) {
                 for (int j = 1; j <= 12; j++) {
-                    int the_bal = MIN_VALUE;
                     if (i < j) {
                         int sellPrice = mList.get(i - 1);
                         int quantity = amount / sellPrice;
-                        the_bal = -quantity * sellPrice;
+                        int the_bal = -quantity * sellPrice;
                         int prce_buy = mList.get(j - 1);
                         int rev = quantity * prce_buy;
                         the_bal += rev;
