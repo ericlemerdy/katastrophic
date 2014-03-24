@@ -1,4 +1,4 @@
-package fr.sgcib;
+package name.lemerdy.eric;
 
 import java.util.ArrayList;
 import java.util.List;
