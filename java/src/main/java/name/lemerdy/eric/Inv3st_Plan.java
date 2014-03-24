@@ -40,11 +40,11 @@ public class Inv3st_Plan {
                         int prce_buy = mList.get(j - 1);
                         int rev = quantity * prce_buy;
                         the_bal += rev;
-                    }
-                    if (the_bal > limitPrft) {
-                        limitPrft = the_bal;
-                        best_bM = i;
-                        best_sM = j;
+                        if (the_bal > limitPrft) {
+                            limitPrft = the_bal;
+                            best_bM = i;
+                            best_sM = j;
+                        }
                     }
                 }
             }
