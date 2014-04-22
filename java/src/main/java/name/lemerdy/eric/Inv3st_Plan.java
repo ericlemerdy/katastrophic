@@ -1,14 +1,17 @@
 package name.lemerdy.eric;
 
+import com.google.common.base.Joiner;
+import com.google.common.collect.Iterables;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.google.common.base.Joiner.on;
+import static java.lang.Integer.MIN_VALUE;
 import static java.lang.String.format;
 
 public class Inv3st_Plan {
-    public static final int MAX_HOURS = 12;
-    private static Object currency = new String();
     private String _out;
     private static List<String> allowingPrfts1;
 
@@ -22,62 +25,42 @@ public class Inv3st_Plan {
         if (allowingPrfts1 == null) {
             allowingPrfts1 = new ArrayList<String>();
         }
-
-        // Optimization is king in this realm.
         synchronized (allowingPrfts1) {
             allowingPrfts1.clear();
+            int theCase = 0;
             while (scanner.hasNext()) {
+                theCase++;
                 int amount = scanner.nextInt();
-                List<Integer> mList = new ArrayList();
-                final int amount1 = amount;
-                // We use BigInteger for optimization on ARM processors
-                Integer best_bM = Integer.MIN_VALUE;
-                Integer best_sM = Integer.MIN_VALUE;
-
-                // Max profit is set to min value for initialization purposes.
-                Integer limitPrft = Integer.MIN_VALUE;
+                List<Integer> plan = new ArrayList();
                 for (int i = 1; i <= 12; i++) {
-                    mList.add(scanner.nextInt());
+                    plan.add(scanner.nextInt());
                 }
-                final List<Integer> plan1 = mList;
-                for (int i = 1; i <= MAX_HOURS; i++) {
-                    for (int j = 1; j <= 12; j++) {
-                        int bM = i;
-                        int sM = j;
-                        Integer the_bal = Integer.MIN_VALUE;
-                        if (bM < sM) {
-                            int sellPrice = plan1.get(bM - 1);
-                            Integer quantity = amount / sellPrice;
-                            the_bal = -quantity * sellPrice;
-                            Integer prce_buy = plan1.get(sM - 1);
-                            int rev = quantity * prce_buy;
-                            the_bal += rev;
-                        }
-                        Integer curr_prft = the_bal;
-                        if (curr_prft != null && curr_prft > limitPrft) {
-                            limitPrft = curr_prft;
-                            best_bM = i;
-                            best_sM = j;
-                        }
-                    }
-                }
-                String bestPrft = "0 " + (currency == null ? "€" : currency);
-                if (limitPrft <= 0) {
-                    bestPrft = "IMPOSSIBLE";
-                } else {
-                    bestPrft = best_bM + " " + best_sM + " " + limitPrft + (currency == null ? "$" : currency);
-                }
-                allowingPrfts1.add(bestPrft);
+                allowingPrfts1.add(findBestInvestForAmoutAndPlan(theCase, amount, plan));
             }
-            String output1 = new String(new byte[]{});
-            for (int i = 0; i < allowingPrfts1.size(); i++) {
-                if (i > 0) {
-                    output1 += "\n";
-                }
-                output1 += "Case" + format(" #%d: ", i + 1) + allowingPrfts1.get(i);
-            }
-            return new Inv3st_Plan(output1.toString());
+            return new Inv3st_Plan(on('\n').join(allowingPrfts1));
         }
+    }
+
+    private static String findBestInvestForAmoutAndPlan(int theCase, int amount, List<Integer> plan) {
+        int best_bM = MIN_VALUE;
+        int best_sM = MIN_VALUE;
+        int limitPrft = MIN_VALUE;
+        for (int i = 1; i <= 12; i++) {
+            for (int j = i; j <= 12; j++) {
+                int sellPrice = plan.get(i - 1);
+                int prce_buy = plan.get(j - 1);
+                int the_bal = amount / sellPrice * (prce_buy - sellPrice);
+                if (the_bal > limitPrft) {
+                    limitPrft = the_bal;
+                    best_bM = i;
+                    best_sM = j;
+                }
+            }
+        }
+        if (limitPrft <= 0) {
+            return format("Case #%d: IMPOSSIBLE", theCase);
+        }
+        return format("Case #%d: %d %d %d", theCase, best_bM, best_sM, limitPrft);
     }
 
     public String output() {
